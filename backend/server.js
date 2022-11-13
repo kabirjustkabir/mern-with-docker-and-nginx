@@ -8,7 +8,13 @@ const postRoute = require('./rotues/post')
 const app = express();
 app.use(express.json())
 // const cosrOptions = "http://localhost:5000/"
-app.use(cors())
+const corsOptions = {
+    origin: process.env.CLIENT,
+    credentials: true
+}
+app.use(express.json())
+
+app.use(cors(corsOptions))
 
 app.use('/api/post', postRoute)
 
